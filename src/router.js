@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App'
-import { Main, About, Category, Editor, Liverpool, Tools } from './pages';
+import { Main, About, Category, Editor, Liverpool, Tools, Blog } from './pages';
 
 const routers = [{
   path: '/',
@@ -13,8 +13,8 @@ const routers = [{
   path: '/category',
   Component: Category,
 }, {
-  path: '/editor',
-  Component: Editor,
+  path: '/blog',
+  Component: Blog,
 }, {
   path: '/liverpool',
   Component: Liverpool,
@@ -28,7 +28,7 @@ class BlogRouter extends React.Component {
       <BrowserRouter>
         <App >
           <Switch>
-            {routers.map(({ path, Component }) => <Route path={path} exact component={Component}/>)}
+            {routers.map(({ path, Component }, index) => <Route path={path} exact component={Component} key={index}/>)}
           </Switch>
         </App>
       </BrowserRouter>

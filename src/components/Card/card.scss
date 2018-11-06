@@ -1,0 +1,27 @@
+.card-container {
+  margin: 10px 5px;
+  padding: 20px 10px;
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+  // border-bottom: 1px solid #eee;
+  // border: 1px solid #eee;
+  box-shadow: 0 0 0 0 #eee;
+  transition: box-shadow .4s;
+  &:hover {
+    box-shadow: 4px 4px 4px 4px #eee;
+  }
+  .card-wrapper {
+    width: 300px;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-height: 200px;
+    .card-title {
+      padding-bottom: 10px;
+      padding-left: 5px;
+      border-bottom: 1px solid #eee;
+    }
+    .card-content {
+      padding: 5px 10px;
+    }
+  }
+}
