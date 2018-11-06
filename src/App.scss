@@ -1,0 +1,18 @@
+.app {
+  // text-align: center;
+  display: flex;
+  flex-direction: column;
+  .app-header {
+
+  }
+  .app-body {
+    display: flex;
+    .app-content {
+      padding: 20px;
+      flex: 6;
+    }
+    .app-slide {
+      flex: 1;
+    }
+  }
+}
