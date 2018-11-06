@@ -1,5 +1,5 @@
 import React from 'react';
-import { Editor as DefaultEditor } from '../../components';
+import { Editor as DefaultEditor } from 'components';
 import { convertToRaw } from 'draft-js';
 import draftToMarkdown from 'draftjs-to-markdown';
 import './editor.scss';

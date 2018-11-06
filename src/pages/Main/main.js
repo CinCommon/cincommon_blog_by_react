@@ -1,5 +1,5 @@
 import React from 'react';
-import { Block } from '../../components';
+import { Block } from 'components';
 import './main.scss';
 
 const BlockData = [{

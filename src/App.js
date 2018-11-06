@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Slide, Container, Card, Footer } from './components';
+import { Header, Slide, Container, Card, Footer } from 'components';
 import { Link } from 'react-router-dom';
-import './App.scss';
+import '@/App.scss';
 
 class App extends Component {
   render() {
