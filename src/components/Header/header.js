@@ -4,7 +4,7 @@ import './header.scss';
 
 export default class Header extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.props = props;
     this.state = {
       currentKey: undefined,

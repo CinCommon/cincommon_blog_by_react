@@ -2,8 +2,8 @@
   display: flex;
   padding: 5px;
   margin: 5px;
-  border-bottom: 3px dashed #eee;
-  height: 140px;
+  border-bottom: 2px dashed #eee;
+  // height: 140px;
   transition: box-shadow .1s;
   &:hover {
     box-shadow: 2px 4px 4px 0 #eee;

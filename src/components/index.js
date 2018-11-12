@@ -5,6 +5,7 @@ import Editor from './Editor/editor';
 import Card from './Card/card';
 import Footer from './Footer/footer';
 import Block from './Block/block';
+import Chunk from './Block/chunk';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   Card,
   Footer,
   Block,
+  Chunk,
 };
