@@ -8,7 +8,7 @@
   box-shadow: 0 0 0 0 #eee;
   transition: box-shadow .4s;
   &:hover {
-    box-shadow: 4px 4px 4px 4px #eee;
+    box-shadow: 1px 1px 1px 1px #eee;
   }
   .card-wrapper {
     width: 400px;
@@ -18,7 +18,7 @@
     .card-title {
       padding-bottom: 10px;
       padding-left: 5px;
-      border-bottom: 1px solid #eee;
+      // border-bottom: 1px solid #eee;
     }
     .card-content {
       padding: 5px 10px;

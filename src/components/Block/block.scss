@@ -2,11 +2,11 @@
   display: flex;
   padding: 5px;
   margin: 5px;
-  border-bottom: 2px dashed #eee;
+  border-bottom: 1px dashed #eee;
   // height: 140px;
   transition: box-shadow .1s;
   &:hover {
-    box-shadow: 2px 4px 4px 0 #eee;
+    box-shadow: 1px 1px 1px 1px #eee;
   }
   .block-thumbnail {
     flex: 2;
