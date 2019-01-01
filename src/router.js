@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Router } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App'
-import { Main, About, Category, Editor, Liverpool, Tools, Blog } from './pages';
+import { Main, About, Category, Liverpool, Tools, Blog } from './pages';
 import { Loading } from './components';
 
 const routers = [{
@@ -33,16 +33,25 @@ const routers = [{
 const renderRouter = routers => routers.map(({ path, Component, children }, index) => children ? <Route path={path} exact key={index} children={({ history, location, match }) => renderRouter(children)}></Route> : <Route path={path} exact key={index} component={Component}></Route>);
 
 class BlogRouter extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      loading: true,
+    };
+  }
+
   render() {
     return (
-      <BrowserRouter>
-        <App >
-          <Loading />
-          <Switch>
-            {renderRouter(routers)}
-          </Switch>
-        </App>
-      </BrowserRouter>
+      <div>
+        <Loading loading={this.state.loading} />
+        <BrowserRouter>
+          <App >
+            <Switch>
+              {renderRouter(routers)}
+            </Switch>
+          </App>
+        </BrowserRouter>
+      </div>
     );
   }
 }

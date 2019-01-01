@@ -1,15 +1,13 @@
 import React from 'react';
 import './loading.scss';
 
-const Loading = ({ children }) => {
-
-  return (
-    <div className="cover">
+const Loading = ({ loading }) => loading ?
+  <div className="cover">
+    <div className="spinner-wrapper">
       <div className="spinner">
-        {children}
       </div>
     </div>
-  )
-}
+  </div> : null;
+
 
 export default Loading;
