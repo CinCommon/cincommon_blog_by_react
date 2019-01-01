@@ -6,6 +6,7 @@ import Card from './Card/card';
 import Footer from './Footer/footer';
 import Block from './Block/block';
 import Chunk from './Block/chunk';
+import Loading from './Loading/loading';
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   Footer,
   Block,
   Chunk,
+  Loading,
 };
