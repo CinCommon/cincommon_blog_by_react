@@ -1,9 +1,10 @@
 import React from 'react';
+
 import './block.scss';
 
-const Block = ({ height = '140px', thumbnail, children, title, titleExtra, footer, footerExtra }) => {
+const Block = ({ height = '140px', thumbnail, children, title, titleExtra, footer, footerExtra, onClick }) => {
   return (
-    <div className='block-container' style={{ height }}>
+    <div className='block-container' onClick={onClick} style={{ height }}>
       {thumbnail && <div className='block-thumbnail'>
         <img className='block-thumbnail-img' src={thumbnail} alt='thumbnail' />
       </div>}

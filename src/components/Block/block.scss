@@ -4,9 +4,13 @@
   margin: 5px;
   border-bottom: 1px dashed #eee;
   // height: 140px;
+  cursor: pointer;
   transition: box-shadow .1s;
   &:hover {
     box-shadow: 1px 1px 1px 1px #eee;
+  }
+  &:active {
+    opacity: 0.5;
   }
   .block-thumbnail {
     flex: 2;
