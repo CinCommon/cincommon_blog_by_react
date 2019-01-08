@@ -18,9 +18,23 @@ export default class Header extends React.Component {
       currentKey: key,
     })
   }
-
+  generateNavLi(navLi) {
+    const result = navLi.map(item =>
+      <Link
+        onClick={() => this.onNavClick(item)}
+        key={item.key}
+        to={item.path}
+        className={`header-menu-link ${this.state.currentKey === item.key ? 'header-menu-link-active' : ''}`}
+      >{item.label}
+      </Link>);
+    result.splice(result.length / 2,
+      0,
+        <Link to='/' onClick={() => this.onNavClick('')} >
+          <img src={require('../../static/logo.png')} alt='logo' className='header-logo' />
+        </Link>);
+    return result;
+  }
   render() {
-
     const navLi = [{
       label: '博客',
       path: '/blog',
@@ -48,20 +62,8 @@ export default class Header extends React.Component {
     }];
     return (
       <div className='header-container'>
-        <div className='header-logo-container'>
-          <Link to='/' onClick={() => this.onNavClick('')}>
-            <img src={require('../../static/logo.png')} alt='logo' className='header-logo' />
-          </Link>
-        </div>
         <div className='header-menu-container'>
-          {navLi.map(item =>
-            <Link
-              onClick={() => this.onNavClick(item)}
-              key={item.key}
-              to={item.path}
-              className={`header-menu-link ${this.state.currentKey === item.key ? 'header-menu-link-active' : ''}`}
-            >{item.label}
-            </Link>)}
+          {this.generateNavLi(navLi)}
         </div>
         <div className='header-search-container'>
           <div className='header-search-wrapper'>
