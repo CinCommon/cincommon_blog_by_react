@@ -1,8 +1,7 @@
-$border-color: #eee;
-$font-size-md: 14px;
-$font-size-lg: 16px;
-$font-size-sm: 12px;
+$base-font-size: 0.4rem;
+$border-color: #DDDDDD;
 
-$base-font-color: #cacec1;
-$base-font-color-hover: #727272aa;
+$base-background-color: #EEEEEE;
+$base-font-color: #0D1A26;
+$base-font-color-hover: mix($base-font-color, #fff, 50%);
 $base-font-color-active: #f006;

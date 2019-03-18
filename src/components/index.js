@@ -7,6 +7,7 @@ import Footer from './Footer/footer';
 import Block from './Block/block';
 import Chunk from './Block/chunk';
 import Loading from './Loading/loading';
+import Drawer from './Drawer';
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   Block,
   Chunk,
   Loading,
+  Drawer,
 };

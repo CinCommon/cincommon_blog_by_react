@@ -10,9 +10,7 @@ export default class Header extends React.Component {
       currentKey: undefined,
     };
   }
-  componentDidMount() {
-    console.log(this.props);
-  }
+  componentDidMount() {}
   onNavClick({ key }) {
     this.setState({
       currentKey: key,
@@ -29,7 +27,7 @@ export default class Header extends React.Component {
       </Link>);
     result.splice(result.length / 2,
       0,
-        <Link to='/' onClick={() => this.onNavClick('')} >
+        <Link to='/' key='logo' onClick={() => this.onNavClick('')} >
           <img src={require('../../static/logo.png')} alt='logo' className='header-logo' />
         </Link>);
     return result;
