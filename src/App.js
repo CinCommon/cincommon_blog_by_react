@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import { Header, Slide, Card, Footer } from 'components';
 import { Link } from 'react-router-dom';
 import './App.scss';
-
 class App extends Component {
+
+  componentDidMount() {
+  }
+
   render() {
     return (
-      <div className="app">
-        <div className='app-header'>
-          <Header></Header>
+      <div className={"app"}>
+        <div className={"app-draw-container"}>
+          <Link to='/' className={'app-menu-link icon-home'} />
+          <Link to='/category' className={'app-menu-link icon-listing-box'} />
+          <Link to='/dateline' className={'app-menu-link icon-star-full'} />
         </div>
-        <div className='app-body'>
-          <div className='app-content'>
+        <div className={"app-main-container"}>
+          <div className={"app-header"}>
+            
+          </div>
+          <div className={"app-page"}>
             {this.props.children}
           </div>
-        </div>
-        <div className='app-footer'>
-          <Footer></Footer>
         </div>
       </div>
     );
   }
 }
-
 export default App;
