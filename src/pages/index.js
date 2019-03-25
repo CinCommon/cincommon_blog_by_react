@@ -1,7 +1,9 @@
-import Category from './Category/category';
-import Main from './Main/main';
+import Category from './Category';
+import Main from './Main';
+import DateLine from './DateLine';
 
 export {
   Main,
   Category,
+  DateLine,
 }

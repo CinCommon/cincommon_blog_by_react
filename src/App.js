@@ -9,10 +9,11 @@ class App extends Component {
   render() {
     return (
       <div className={"app"}>
-        <ul className={"app-draw-container"}>
+        <div className={"app-draw-container"}>
           <Link to='/' className={'app-menu-link icon-home'} />
           <Link to='/category' className={'app-menu-link icon-listing-box'} />
-        </ul>
+          <Link to='/dateline' className={'app-menu-link icon-star-full'} />
+        </div>
         <div className={"app-main-container"}>
           <div className={"app-header"}>
             

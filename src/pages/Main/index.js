@@ -1,9 +1,28 @@
 import React from 'react';
 import parser from 'react-html-parser';
-import './main.scss';
+import './index.scss';
+import Axios from 'axios';
 
 export default class Main extends React.Component {
-  render () {
+
+  constructor() {
+    super();
+    this.state = {
+      top10List: [],
+    };
+  }
+
+  componentDidMount() {
+    console.log(this.state.top10List);
+    Axios.get('/blog/initMain')
+    .then(res => {
+        const data = res.data.data;
+        this.setState({ top10List: data.top10List });
+      });
+  }
+
+  render() {
+    console.log(this.state.top10List);
     return (
       <div className={'main-container'}>
         <div className={'main-block'}>
