@@ -13,6 +13,7 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     console.log(this.state.top10List);
     Axios.get('/blog/initMain')
     .then(res => {

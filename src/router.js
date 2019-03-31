@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App'
-import { Main, Category, DateLine } from './pages';
+import { Main, Category, DateLine, Detail } from './pages';
 import { Loading } from './components';
 
 const routers = [{
@@ -13,6 +13,9 @@ const routers = [{
 }, {
   path: '/dateline',
   Component: DateLine,
+}, {
+  path: '/blog/:id',
+  Component: Detail,
 }];
 
 const renderRouter = routers => routers.map(({ path, Component, children }, index) => children ? <Route path={path} exact key={index} children={({ history, location, match }) => renderRouter(children)}></Route> : <Route path={path} exact key={index} component={Component}></Route>);

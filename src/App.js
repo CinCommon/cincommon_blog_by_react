@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './App.scss';
 class App extends Component {
 
@@ -26,4 +26,5 @@ class App extends Component {
     );
   }
 }
+// export default withRouter(App);
 export default App;
