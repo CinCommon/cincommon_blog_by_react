@@ -2,15 +2,19 @@ import React from 'react';
 import './index.scss';
 import { Calendar, Badge } from 'antd';
 
-export default class DateLine extends React.Component {
+export default class CalendarView extends React.Component {
 
   constructor() {
     super();
     this.dateCellRender = this.dateCellRender.bind(this);
     this.monthCellRender = this.monthCellRender.bind(this);
+    this.state = {
+      today: new Date(),
+    };
   }
 
   getListData(value) {
+    console.log('getListData', value);
     let listData;
     switch (value.date()) {
       case 8:
@@ -24,7 +28,7 @@ export default class DateLine extends React.Component {
           { type: 'success', content: 'This is usual event.' },
           { type: 'error', content: 'This is error event.' },
         ]; break;
-      case 15:
+      case 16:
         listData = [
           { type: 'warning', content: 'This is warning event' },
           { type: 'success', content: 'This is very long usual event。。....' },
@@ -39,6 +43,7 @@ export default class DateLine extends React.Component {
   }
 
   dateCellRender(value) {
+    console.log('dateCellRender', value);
     const listData = this.getListData(value);
     return (
       <ul className="events">
@@ -54,12 +59,14 @@ export default class DateLine extends React.Component {
   }
 
   getMonthData(value) {
+    console.log(value);
     if (value.month() === 8) {
       return 1394;
     }
   }
 
   monthCellRender(value) {
+    console.log(value);
     const num = this.getMonthData(value);
     return num ? (
       <div className="notes-month">

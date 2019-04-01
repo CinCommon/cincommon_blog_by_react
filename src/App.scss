@@ -35,14 +35,17 @@
   .app-main-container {
     display: flex;
     flex-direction: column;
+    height: 100%;
     width: 100%;
     .app-header {
       width: 100%;
+      float: left;
+      padding-top: .3rem;
       height: 1.5rem;
+      text-align: center;
     }
     .app-page {
-      height: 100%;
-      padding: 1rem;
+      height: calc(100% - 1.5rem);
     }
   }
 }

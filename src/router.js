@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './App'
-import { Main, Category, DateLine, Detail } from './pages';
+import { Main, Category, CalendarView, Detail } from './pages';
 import { Loading } from './components';
 
 const routers = [{
@@ -11,8 +11,8 @@ const routers = [{
   path: '/category',
   Component: Category,
 }, {
-  path: '/dateline',
-  Component: DateLine,
+  path: '/calendar',
+  Component: CalendarView,
 }, {
   path: '/blog/:id',
   Component: Detail,

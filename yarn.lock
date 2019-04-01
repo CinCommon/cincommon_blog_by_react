@@ -9101,7 +9101,7 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
 
 react-redux@^6.0.1:
   version "6.0.1"
-  resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-6.0.1.tgz#0d423e2c1cb10ada87293d47e7de7c329623ba4d"
+  resolved "http://registry.npm.taobao.org/react-redux/download/react-redux-6.0.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Freact-redux%2Fdownload%2Freact-redux-6.0.1.tgz#0d423e2c1cb10ada87293d47e7de7c329623ba4d"
   integrity sha1-DUI+LByxCtqHKT1H5958MpYjuk0=
   dependencies:
     "@babel/runtime" "^7.3.1"

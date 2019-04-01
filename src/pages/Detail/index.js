@@ -27,8 +27,10 @@ class Detail extends React.Component {
     const { content, title } = this.state.blogInfo
     return (
       <div className="detail-container">
+        <div className="detail-wrapper">
         <h1>{title}</h1>
         {parser(content)}
+        </div>
       </div>
     )
   }

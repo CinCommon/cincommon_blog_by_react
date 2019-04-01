@@ -1,8 +1,11 @@
 .detail-container {
+  overflow-y: auto;
   height: 100%;
-  width: 70%;
-  margin: auto;
-  padding: 60px 30px 60px 30px;
-  background-color: #fff;
-  border: 1px solid #f1f1f1;
+  .detail-wrapper {
+    width: 70%;
+    margin: auto;
+    padding: 60px 30px 60px 30px;
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+  }
 }

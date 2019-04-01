@@ -1,11 +1,11 @@
 import Category from './Category';
 import Main from './Main';
-import DateLine from './DateLine';
+import CalendarView from './Calendar';
 import Detail from './Detail';
 
 export {
   Main,
   Category,
-  DateLine,
+  CalendarView,
   Detail,
 };
