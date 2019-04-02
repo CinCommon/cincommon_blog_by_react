@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './App.scss'
-import { dispatch } from 'C:/Users/Cin/AppData/Local/Microsoft/TypeScript/3.3/node_modules/rxjs/internal/observable/pairs';
 class App extends Component {
-  componentDidMount() {
-    console.log(this)
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -18,7 +15,7 @@ class App extends Component {
         </div>
         <div className={'app-main-container'}>
           <div className={'app-header'}>
-            <h1>{'HEADER'}</h1>
+            <h1>{this.props.headerValue}</h1>
           </div>
           <div className={'app-page'}>{this.props.children}</div>
         </div>
@@ -26,10 +23,9 @@ class App extends Component {
     )
   }
 }
-// export default withRouter(App);
-export default connect(
-  state => state,
-  dispatch => { console.log('log---from mapDispatchToProps', dispatch); return {dispatch}},
-  // (stateProps, dispatchProps, ownProps) => { console.log('log---from mergeProps', stateProps, dispatchProps, ownProps); return {} }
-  // dispatch => dispatch
-)(App)
+export default withRouter(
+  connect(
+    state => state,
+    dispatch => ({ dispatch }),
+  )(App)
+)

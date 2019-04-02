@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.scss';
 import { Calendar, Badge } from 'antd';
+import { setHeader } from '../../utils/commonRedux';
 
 export default class CalendarView extends React.Component {
 
@@ -13,8 +14,10 @@ export default class CalendarView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    setHeader('按照日期查看')
+  }
   getListData(value) {
-    console.log('getListData', value);
     let listData;
     switch (value.date()) {
       case 8:
@@ -43,7 +46,6 @@ export default class CalendarView extends React.Component {
   }
 
   dateCellRender(value) {
-    console.log('dateCellRender', value);
     const listData = this.getListData(value);
     return (
       <ul className="events">
@@ -59,14 +61,12 @@ export default class CalendarView extends React.Component {
   }
 
   getMonthData(value) {
-    console.log(value);
     if (value.month() === 8) {
       return 1394;
     }
   }
 
   monthCellRender(value) {
-    console.log(value);
     const num = this.getMonthData(value);
     return num ? (
       <div className="notes-month">

@@ -1,7 +1,10 @@
 import React from 'react'
 import parser from 'react-html-parser'
 import Axios from 'axios'
+import { connect } from 'react-redux'
+import { SET_HEADER } from "@/store/actionTypes";
 import './index.scss'
+import { setHeader } from '../../utils/commonRedux';
 
 class Detail extends React.Component {
   constructor() {
@@ -12,13 +15,16 @@ class Detail extends React.Component {
   }
 
   componentWillMount() {
+    const { dispatch } = this.props
     const { id } = this.props.match.params
     Axios.get('/blog', {
       params: {
         id
       }
     }).then(res => {
-      this.setState({ blogInfo: res.data.data })
+      const blogInfo = res.data.data;
+      setHeader(blogInfo.title)
+      this.setState({ blogInfo })
     })
   }
   componentDidMount() {}
@@ -35,4 +41,4 @@ class Detail extends React.Component {
     )
   }
 }
-export default Detail
+export default connect(state => state, dispatch => ({dispatch}))(Detail)
