@@ -156,6 +156,8 @@ module.exports = {
       'components': join('src/components'),
       'style': join('src/style'),
       'pages': join('src/pages'),
+      'utils': join('src/utils'),
+      'api': join('src/api'),
       '@': join('src'),
     },
     plugins: [

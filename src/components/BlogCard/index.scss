@@ -1,0 +1,46 @@
+@import '~@/style/variables.scss';
+.blog-block {
+  cursor: pointer;
+  border-top: solid 0.02rem $border-color;
+  border-bottom: solid 0.02rem $border-color;
+  .block-title-container {
+    display: flex;
+    justify-content: space-between;
+    .block-title {
+      display: inline-block;
+    }
+    .block-tag-wrapper {
+      height: 100%;
+      align-self: center;
+      .block-tag {
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.2rem;
+        color: gray;
+        font-size: 80%;
+        &:first-child {
+          margin-left: 1rem;
+        }
+        &:hover {
+          background: rgb(243, 237, 237);
+          border: none;
+        }
+      }
+    }
+    .block-date {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+  }
+  &:hover {
+    .block-title {
+      color: gray;
+      animation: heartBeat infinite 1s;
+    }
+  }
+  > p {
+    padding-left: 1rem;
+    line-height: 0.6rem;
+    font-size: 0.3rem;
+  }
+}

@@ -1,43 +1,77 @@
 import React from 'react'
 import './index.scss'
-import Axios from 'axios'
-import { setHeader } from '../../utils/commonRedux';
+import { setHeader } from 'utils/commonRedux'
+import { BlogCard } from 'components'
+import { formatDate } from 'utils/utils'
+import api from 'api'
 
 export default class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      top10List: []
+      blogList: []
     }
     this.onBlogClick = this.onBlogClick.bind(this)
+    this.onTagClick = this.onTagClick.bind(this)
+    this.onDateClick = this.onDateClick.bind(this)
+  }
+  componentDidMount() {
+    const { params, path } = this.props.match
+    switch (path) {
+      case '/tag/:id':
+        this.findBlogByTagId(params.id)
+        break
+      case '/calendar/:id':
+        this.findBlogByCalendar(params.id)
+        break
+      case '/':
+        api.get.initMain().then(data => {
+          this.setState({ blogList: data })
+        })
+        setHeader('CinCommon-Blog')
+        break
+      default:
+        break
+    }
   }
 
-  componentDidMount() {
-    setHeader('')
-    Axios.get('/blog/initMain').then(res => {
-      const data = res.data.data
-      this.setState({ top10List: data })
-    })
+  onDateClick(date) {
+    this.findBlogByCalendar(date)
+    this.props.history.push(`/calendar/${date}`)
   }
+
   onBlogClick(blogId) {
     this.props.history.push(`/blog/${blogId}`)
+  }
+  onTagClick(tagId) {
+    this.findBlogByTagId(tagId)
+    this.props.history.push(`/tag/${tagId}`)
+  }
+  findBlogByTagId(id) {
+    api.get.findTagById(id).then(data => {
+      this.setState({ blogList: data.blogInfoSet })
+      setHeader(data.tagName)
+    })
+  }
+  findBlogByCalendar(date) {
+    api.get.findBlogByDate(date).then(data => {
+      this.setState({ blogList: data })
+    })
+    setHeader(formatDate(date, 'YYYY/MM/DD'))
   }
 
   render() {
     return (
       <div className="main-container">
         <div className="main-block-wrapper">
-          {this.state.top10List.map(item => (
-            <div
-              className={'main-block'}
+          {this.state.blogList.map(item => (
+            <BlogCard
+              onBlogClick={this.onBlogClick}
+              onTagClick={this.onTagClick}
+              onDateClick={this.onDateClick}
+              blog={item}
               key={item.id}
-              onClick={() => this.onBlogClick(item.id)}
-            >
-              <div>
-                <h1 className={'block-title'}>{item.title}</h1>
-              </div>
-              <p>{item.summary}</p>
-            </div>
+            />
           ))}
         </div>
       </div>

@@ -1,29 +1,9 @@
-@import '~@/style/variables.scss';
 .main-container {
-  animation: 2s fadeInDown ease-out, 2s fadeIn ease-out;
+  animation: 1s fadeIn ease-out;
   height:100%;
   .main-block-wrapper {
     padding: 1rem;
     background: #fff;
     height:100%;
-    .main-block {
-      cursor: pointer;
-      border-top: solid 0.02rem $border-color;
-      border-bottom: solid 0.02rem $border-color;
-      > h1 {
-        display: inline-block;
-      }
-      &:hover {
-        >h1 {
-          color: gray;
-          animation: heartBeat infinite 1s;
-        }
-      }
-      >p {
-        padding-left: 1rem;
-        line-height: .6rem;
-        font-size: .3rem;
-      }
-    }
   }
 }

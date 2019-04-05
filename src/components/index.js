@@ -1,5 +1,4 @@
-import Loading from './Loading/loading';
+import Loading from './Loading/loading'
+import BlogCard from './BlogCard'
 
-export {
-  Loading,
-};
+export { Loading, BlogCard }

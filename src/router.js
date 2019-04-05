@@ -8,7 +8,7 @@ const routers = [{
   path: '/',
   Component: Main,
 }, {
-  path: '/category',
+  path: '/tag',
   Component: Category,
 }, {
   path: '/calendar',
@@ -16,6 +16,12 @@ const routers = [{
 }, {
   path: '/blog/:id',
   Component: Detail,
+}, {
+  path: '/tag/:id',
+  Component: Main,
+}, {
+  path: '/calendar/:id',
+  Component: Main,
 }];
 
 const renderRouter = routers => routers.map(({ path, Component, children }, index) => children ? <Route path={path} exact key={index} children={({ history, location, match }) => renderRouter(children)}></Route> : <Route path={path} exact key={index} component={Component}></Route>);
