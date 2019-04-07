@@ -10,8 +10,8 @@ class App extends Component {
       <div className={'app'}>
         <div className={'app-draw-container'}>
           <Link to="/" className={'app-menu-link icon-home'} />
-          <Link to="/tag" className={'app-menu-link icon-listing-box'} />
-          <Link to="/calendar" className={'app-menu-link icon-star-full'} />
+          <Link to="/tag" className={'app-menu-link icon-drawer'} />
+          <Link to="/calendar" className={'app-menu-link icon-stopwatch'} />
         </div>
         <div className={'app-main-container'}>
           <div className={'app-header'}>

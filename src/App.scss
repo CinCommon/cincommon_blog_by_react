@@ -3,7 +3,7 @@
   height: 100%;
   display: flex;
   background: $base-background-color;
-  animation: 1s ;
+  animation: 0.5s;
   .app-draw-container {
     display: flex;
     flex-direction: column;
@@ -14,9 +14,6 @@
     transition-delay: .5s;
     border-right: solid 0.02rem $border-color;
     animation: 1s fadeInLeft ease-in, 1s fadeIn ease-in;
-    &:hover {
-      width: 3rem;
-    }
     > .app-menu-link {
       color: $base-font-color;
       cursor: pointer;

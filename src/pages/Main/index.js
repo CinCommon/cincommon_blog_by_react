@@ -54,7 +54,7 @@ export default class Main extends React.Component {
     })
   }
   findBlogByCalendar(date) {
-    api.get.findBlogByDate(date).then(data => {
+    api.get.getOneDayBlog(date).then(data => {
       this.setState({ blogList: data })
     })
     setHeader(formatDate(date, 'YYYY/MM/DD'))

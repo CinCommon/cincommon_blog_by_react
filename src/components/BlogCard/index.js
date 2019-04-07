@@ -11,7 +11,16 @@ const BlogCard = ({ blog, onBlogClick, onTagClick, onDateClick }) => {
     >
       <div className="block-title-container">
         <h1 className="block-title">{blog.title}</h1>
-        <div className="block-tag-wrapper">
+        <div className="block-info-wrapper">
+          <span
+            className="block-date"
+            onClick={e => {
+              e.stopPropagation()
+              onDateClick(blog.createDate, blog.id, blog)
+            }}
+          >
+            {formatDate(blog.createDate)}
+          </span>
           {blog.tagInfoSet.map(item => (
             <span
               key={item.tagId}
@@ -25,15 +34,7 @@ const BlogCard = ({ blog, onBlogClick, onTagClick, onDateClick }) => {
             </span>
           ))}
         </div>
-        <span
-          className="block-date"
-          onClick={e => {
-            e.stopPropagation()
-            onDateClick(blog.createDate, blog.id, blog)
-          }}
-        >
-          {formatDate(blog.createDate)}
-        </span>
+        <h3>{blog.introduction}</h3>
       </div>
     </div>
   )

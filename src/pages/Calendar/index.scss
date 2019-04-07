@@ -1,13 +1,21 @@
+@import '~@/style/variables.scss';
+.calendar-container {
+  background: #fff;
+}
 .events {
   list-style: none;
   padding: .1rem;
   >li {
+    animation: fadeIn 1s ease;
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
     text-overflow: ellipsis;
-    font-size: 90%;
+    font-size: 120%;
     font-weight: 600;
+    &:hover {
+      color: gray;
+    }
   }
 }
 .notes-month {

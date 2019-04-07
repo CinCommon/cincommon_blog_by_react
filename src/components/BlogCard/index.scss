@@ -3,16 +3,26 @@
   cursor: pointer;
   border-top: solid 0.02rem $border-color;
   border-bottom: solid 0.02rem $border-color;
+  padding-bottom: .5rem;
   .block-title-container {
-    display: flex;
-    justify-content: space-between;
     .block-title {
       display: inline-block;
     }
-    .block-tag-wrapper {
+    .block-info-wrapper {
       height: 100%;
       align-self: center;
+      display: flex;
+      .block-date {
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.2rem;
+        &:hover {
+          background: rgb(242, 240, 248);
+          border: none;
+        }
+      }
       .block-tag {
+        display: flex;
+        align-items: center;
         padding: 0.1rem 0.2rem;
         border-radius: 0.2rem;
         color: gray;
@@ -25,11 +35,6 @@
           border: none;
         }
       }
-    }
-    .block-date {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
     }
   }
   &:hover {

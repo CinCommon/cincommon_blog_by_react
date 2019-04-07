@@ -1,20 +1,45 @@
 import React from 'react'
-import './index.scss'
+import moment from 'moment'
 import { Calendar } from 'antd'
 import { setHeader } from 'utils/commonRedux'
+import { formatDate } from 'utils/utils'
 import api from 'api'
+import './index.scss'
 
 export default class CalendarView extends React.Component {
   constructor() {
     super()
     this.dateCellRender = this.dateCellRender.bind(this)
     this.monthCellRender = this.monthCellRender.bind(this)
+    this.onPanelChange = this.onPanelChange.bind(this)
+    this.onChange = this.onChange.bind(this)
     this.state = {
-      today: new Date(),
-      dataMap: []
+      today: new moment(),
+      selectDate: new moment(),
+      dataMap: [],
+      mode: 'month',
+      yearCountMap: {}
     }
   }
-
+  timer = null
+  onChange(date) {
+    const { mode, selectDate } = this.state
+    this.setState(
+      {
+        selectDate: date
+      },
+      () => {
+        if (selectDate[mode]() !== date[mode]()) {
+          this.initCalendar()
+        }
+      }
+    )
+    if (mode === 'year') {
+      this.setState({
+        mode: 'month'
+      })
+    }
+  }
   componentDidMount() {
     this.initCalendar()
   }
@@ -22,14 +47,31 @@ export default class CalendarView extends React.Component {
     return this.state.dataMap[value.format('YYYY/MM/DD')] || []
   }
   initCalendar() {
-    setHeader('按照日期查看')
-    const date = this.state.today
-    const y = date.getFullYear()
-    const m = date.getMonth()
-    const startDate = new Date(y, m, 1).getTime()
-    const endDate = new Date(y, m + 1, 0).getTime()
-    api.get.findBlogByDate(startDate, endDate).then(data => {
-      this.setState({ dataMap: data })
+    clearTimeout(this.timer)
+    this.timer = setTimeout(() => {
+      if (this.state.mode === 'month') {
+        setHeader(formatDate(this.state.selectDate.valueOf(), 'YYYY/MM'))
+        const date = this.state.selectDate
+        api.get
+          .findBlogByDate(
+            date.startOf('month').valueOf(),
+            date.endOf('month').valueOf()
+          )
+          .then(data => {
+            this.setState({ dataMap: data })
+          })
+      } else {
+        setHeader(formatDate(this.state.selectDate.valueOf(), 'YYYY'))
+        const date = this.state.selectDate
+        api.get.getOneYearCount(date.year()).then(data => {
+          this.setState({ yearCountMap: data })
+        })
+      }
+    }, 200)
+  }
+  onPanelChange(date, mode) {
+    this.setState({ mode }, () => {
+      this.initCalendar()
     })
   }
   dateCellRender(value) {
@@ -37,20 +79,18 @@ export default class CalendarView extends React.Component {
     return (
       <ul className="events">
         {listData.map(item => (
-          <li key={item.id}>
-            {item.title}
-          </li>
+          <li key={item.id}>{item.title}</li>
         ))}
       </ul>
     )
   }
 
   getMonthData(value) {
-    return this.state.dataMap[value.format('YYYY/MM')] || []
+    return this.state.yearCountMap[value.format('YYYY/MM')] || 0
   }
 
   monthCellRender(value) {
-    const num = this.getMonthData(value).length
+    const num = this.getMonthData(value)
     return num ? (
       <div className="notes-month">
         <section>{num}</section>
@@ -61,10 +101,13 @@ export default class CalendarView extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="calendar-container">
         <Calendar
+          onPanelChange={this.onPanelChange}
           dateCellRender={this.dateCellRender}
           monthCellRender={this.monthCellRender}
+          onChange={this.onChange}
+          mode={this.state.mode}
         />
       </div>
     )
