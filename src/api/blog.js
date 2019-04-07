@@ -1,24 +1,24 @@
-import Axios from './axios'
+import request from './axios'
 export const prefix = 'get'
 
-export const initMain = () => Axios.get(`/${prefix}/initMain`)
+export const initMain = () => request('get', `/${prefix}/initMain`)
 
-export const findBlogById = id => Axios.get(`/${prefix}/blog/${id}`)
+export const findBlogById = id => request('get', `/${prefix}/blog/${id}`)
 
-export const initTag = () => Axios.get(`/${prefix}/tag`)
+export const initTag = () => request('get', `/${prefix}/tag`)
 
-export const findTagById = id => Axios.get(`/${prefix}/tag/${id}`)
+export const findTagById = id => request('get', `/${prefix}/tag/${id}`)
 
-export const initForum = () => Axios.get(`/${prefix}/forum`)
+export const initForum = () => request('get', `/${prefix}/forum`)
 
-export const findForumById = id => Axios.get(`/${prefix}/forum/${id}`)
+export const findForumById = id => request('get', `/${prefix}/forum/${id}`)
 export const getOneDayBlog = timestamp =>
-  Axios.get(`/${prefix}/getOneDayBlog/${timestamp}`)
+  request('get', `/${prefix}/getOneDayBlog/${timestamp}`)
 
-export const getOneYearCount = year => Axios.get(`/${prefix}/getOneYearCount/${year}`)
+export const getOneYearCount = year => request('get', `/${prefix}/getOneYearCount/${year}`)
 
 export const findBlogByDate = (startDate, endDate) =>
-  Axios.get(`/${prefix}/queryByDate`, {
+  request('get', `/${prefix}/queryByDate`, {
     params: {
       startDate,
       endDate
