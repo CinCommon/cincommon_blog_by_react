@@ -1,6 +1,5 @@
 import React from 'react'
 import './index.scss'
-import { Button } from 'antd'
 import { setHeader } from 'utils/commonRedux'
 import api from 'api';
 
@@ -41,10 +40,12 @@ export default class Category extends React.Component {
               <img
                 className="normal-background"
                 src={require('../../static/tag_background_small_size.png')}
-              />
+                alt="home-jersey"
+                />
               <img
                 className="hover-background"
                 src={require('../../static/tag_background_small_size_hover.png')}
+                alt="away-jersey"
               />
               <div>{item.blogInfoSet.length}</div>
             </div>

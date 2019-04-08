@@ -1,5 +1,5 @@
 import React from 'react'
-import parser from 'react-html-parser'
+import HighLight from 'react-highlight'
 import { connect } from 'react-redux'
 import './index.scss'
 import { setHeader } from 'utils/commonRedux'
@@ -23,10 +23,12 @@ class Detail extends React.Component {
   componentDidMount() {}
 
   render() {
-    const { content, title } = this.state.blogInfo
+    const { content } = this.state.blogInfo
     return (
       <div className="detail-container">
-        <div className="detail-wrapper">{parser(content)}</div>
+        <div className="detail-wrapper">
+          <HighLight innerHTML={true}>{content}</HighLight>
+        </div>
       </div>
     )
   }
