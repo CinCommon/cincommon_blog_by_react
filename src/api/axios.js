@@ -1,8 +1,11 @@
 import Axios from 'axios'
 import { Modal } from 'antd'
 
+const API_PREFIX = '/blog-api'
+
 Axios.interceptors.request.use(config => {
   console.log('before---axios', config)
+  config.url = `${API_PREFIX}${config.url}`
   return config
 })
 Axios.interceptors.response.use(response => {
