@@ -12,6 +12,7 @@ export const findTagById = id => request('get', `/${prefix}/tag/${id}`)
 export const initForum = () => request('get', `/${prefix}/forum`)
 
 export const findForumById = id => request('get', `/${prefix}/forum/${id}`)
+
 export const getOneDayBlog = timestamp =>
   request('get', `/${prefix}/getOneDayBlog/${timestamp}`)
 

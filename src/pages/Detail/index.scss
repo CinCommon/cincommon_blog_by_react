@@ -5,8 +5,39 @@
   .detail-wrapper {
     width: 70%;
     margin: auto;
-    padding: 60px 30px 60px 30px;
+    padding: 1rem 0.5rem;
     background-color: #fff;
     border: 1px solid #f1f1f1;
+  }
+  .detail-footer {
+    width: 70%;
+    margin: auto;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.5rem;
+    .prev,
+    .post {
+      display: flex;
+      cursor: pointer;
+      transition: font-size .5s ease;
+      &:hover {
+        font-size: 0.6rem;
+      }
+      .content {
+        word-break: break-all;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .prev {
+      margin-right: 0.1rem;
+    }
+    .post {
+      margin-left: 0.1rem;
+    }
+    .detail-arrow {
+      margin: 1rem 0.1rem;
+    }
   }
 }

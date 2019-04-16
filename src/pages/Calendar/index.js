@@ -13,6 +13,7 @@ export default class CalendarView extends React.Component {
     this.monthCellRender = this.monthCellRender.bind(this)
     this.onPanelChange = this.onPanelChange.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.onSelect = this.onSelect.bind(this)
     this.state = {
       today: new moment(),
       selectDate: new moment(),
@@ -84,6 +85,9 @@ export default class CalendarView extends React.Component {
       </ul>
     )
   }
+  onSelect(value) {
+    this.props.history.push(`/calendar/${value.valueOf()}`)
+  }
 
   getMonthData(value) {
     return this.state.yearCountMap[value.format('YYYY/MM')] || 0
@@ -107,6 +111,7 @@ export default class CalendarView extends React.Component {
           dateCellRender={this.dateCellRender}
           monthCellRender={this.monthCellRender}
           onChange={this.onChange}
+          onSelect={this.onSelect}
           mode={this.state.mode}
         />
       </div>
