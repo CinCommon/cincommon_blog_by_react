@@ -1,9 +1,10 @@
-import { CHANGE_VALUE, SET_HEADER } from './actionTypes';
+import { CHANGE_VALUE, SET_HEADER, SET_LOADING } from "./actionTypes";
 
 const defaultState = {
   value: 'CinCommon',
   value2: 'Liverpool',
   headerValue: '',
+  loading: false,
 };
 
 // reducer 可以接收state, 但是不可以直接修改原来的state
@@ -14,6 +15,9 @@ export default (state = defaultState, action) => {
     return newState;  
   } else if (action.type === SET_HEADER) {
     newState.headerValue = action.value;
+    return newState;  
+  } else if (action.type === SET_LOADING) {
+    newState.loading = action.value;
     return newState;  
   }
   return state;

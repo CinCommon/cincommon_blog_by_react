@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.scss'
 import { setHeader } from 'utils/commonRedux'
-import { BlogCard } from 'components'
+import { BlogCard, SimplePagination } from 'components'
 import { formatDate } from 'utils/utils'
 import api from 'api'
 
@@ -9,13 +9,21 @@ export default class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      blogList: []
+      blogList: [],
+      pageSize: 2,
+      pageNum: 1,
+      total: 0
     }
     this.onBlogClick = this.onBlogClick.bind(this)
     this.onTagClick = this.onTagClick.bind(this)
     this.onDateClick = this.onDateClick.bind(this)
+    this.onPageChangeClick = this.onPageChangeClick.bind(this)
   }
   componentDidMount() {
+    this.renderList()
+  }
+
+  renderList() {
     const { params, path } = this.props.match
     switch (path) {
       case '/tag/:id':
@@ -25,8 +33,9 @@ export default class Main extends React.Component {
         this.findBlogByCalendar(params.id)
         break
       case '/':
-        api.get.initMain().then(data => {
-          this.setState({ blogList: data })
+        api.get.initMain(this.state.pageSize, this.state.pageNum).then(data => {
+          const { list, total } = data
+          this.setState({ blogList: list, total })
         })
         setHeader('CinCommon-Blog')
         break
@@ -34,9 +43,7 @@ export default class Main extends React.Component {
         break
     }
   }
-
   onDateClick(date) {
-    // this.findBlogByCalendar(date)
     this.props.history.push(`/calendar/${date}`)
   }
 
@@ -44,7 +51,6 @@ export default class Main extends React.Component {
     this.props.history.push(`/blog/${blogId}`)
   }
   onTagClick(tagId) {
-    // this.findBlogByTagId(tagId)
     this.props.history.push(`/tag/${tagId}`)
   }
   findBlogByTagId(id) {
@@ -60,10 +66,20 @@ export default class Main extends React.Component {
     setHeader(formatDate(date, 'YYYY/MM/DD'))
   }
 
+  onPageChangeClick(pageNum) {
+    this.setState({ pageNum }, this.renderList)
+  }
+
   render() {
     return (
       <div className="main-container">
         <div className="main-block-wrapper">
+          <SimplePagination
+            pageSize={this.state.pageSize}
+            total={this.state.total}
+            pageNum={this.state.pageNum}
+            onClick={this.onPageChangeClick}
+          />
           {this.state.blogList.map(item => (
             <BlogCard
               onBlogClick={this.onBlogClick}

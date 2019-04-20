@@ -1,7 +1,7 @@
 import request from './axios'
 export const prefix = 'get'
 
-export const initMain = () => request('get', `/${prefix}/initMain`)
+export const initMain = (pageSize = 10, pageNum = 1) => request('get', `/${prefix}/initMain`, { pageSize, pageNum });
 
 export const findBlogById = id => request('get', `/${prefix}/blog/${id}`)
 
