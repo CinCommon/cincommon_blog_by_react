@@ -36,7 +36,7 @@ export default class Main extends React.Component {
   }
 
   onDateClick(date) {
-    this.findBlogByCalendar(date)
+    // this.findBlogByCalendar(date)
     this.props.history.push(`/calendar/${date}`)
   }
 
@@ -44,7 +44,7 @@ export default class Main extends React.Component {
     this.props.history.push(`/blog/${blogId}`)
   }
   onTagClick(tagId) {
-    this.findBlogByTagId(tagId)
+    // this.findBlogByTagId(tagId)
     this.props.history.push(`/tag/${tagId}`)
   }
   findBlogByTagId(id) {

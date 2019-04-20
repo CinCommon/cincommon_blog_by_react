@@ -12,7 +12,6 @@ export default class CalendarView extends React.Component {
     this.dateCellRender = this.dateCellRender.bind(this)
     this.monthCellRender = this.monthCellRender.bind(this)
     this.onPanelChange = this.onPanelChange.bind(this)
-    this.onChange = this.onChange.bind(this)
     this.onSelect = this.onSelect.bind(this)
     this.state = {
       today: new moment(),
@@ -23,24 +22,6 @@ export default class CalendarView extends React.Component {
     }
   }
   timer = null
-  onChange(date) {
-    const { mode, selectDate } = this.state
-    this.setState(
-      {
-        selectDate: date
-      },
-      () => {
-        if (selectDate[mode]() !== date[mode]()) {
-          this.initCalendar()
-        }
-      }
-    )
-    if (mode === 'year') {
-      this.setState({
-        mode: 'month'
-      })
-    }
-  }
   componentDidMount() {
     this.initCalendar()
   }
@@ -80,13 +61,28 @@ export default class CalendarView extends React.Component {
     return (
       <ul className="events">
         {listData.map(item => (
-          <li key={item.id}>{item.title}</li>
+          <li onClick={() => this.props.history.push(`/blog/${item.id}`)} key={item.id}>{item.title}</li>
         ))}
       </ul>
     )
   }
-  onSelect(value) {
-    this.props.history.push(`/calendar/${value.valueOf()}`)
+  onSelect(date) {
+    const { mode, selectDate } = this.state
+    this.setState(
+      {
+        selectDate: date
+      },
+      () => {
+        if (selectDate[mode]() !== date[mode]()) {
+          this.initCalendar()
+        }
+      }
+    )
+    if (mode === 'year') {
+      this.setState({
+        mode: 'month'
+      })
+    }
   }
 
   getMonthData(value) {
@@ -110,7 +106,6 @@ export default class CalendarView extends React.Component {
           onPanelChange={this.onPanelChange}
           dateCellRender={this.dateCellRender}
           monthCellRender={this.monthCellRender}
-          onChange={this.onChange}
           onSelect={this.onSelect}
           mode={this.state.mode}
         />
