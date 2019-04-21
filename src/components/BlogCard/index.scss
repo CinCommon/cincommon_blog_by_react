@@ -1,11 +1,12 @@
 @import '~@/style/variables.scss';
 .blog-block {
-  cursor: pointer;
   border-top: solid 0.02rem $border-color;
   border-bottom: solid 0.02rem $border-color;
   padding-bottom: .5rem;
+  padding-left: .1rem;
   .block-title-container {
     .block-title {
+      cursor: pointer;
       display: inline-block;
     }
     .block-info-wrapper {
@@ -16,6 +17,7 @@
         padding: 0.1rem 0.2rem;
         border-radius: 0.2rem;
         &:hover {
+          cursor: pointer;
           background: rgb(242, 240, 248);
           border: none;
         }
@@ -31,6 +33,7 @@
           margin-left: 1rem;
         }
         &:hover {
+          cursor: pointer;
           background: rgb(243, 237, 237);
           border: none;
         }
@@ -38,6 +41,7 @@
     }
   }
   &:hover {
+    background: rgb(253, 253, 253);
     .block-title {
       color: gray;
       animation: heartBeat infinite 1s;

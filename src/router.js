@@ -39,7 +39,7 @@ const renderRouter = routers =>
         path={path}
         exact
         key={index}
-        children={({ history, location, match }) => renderRouter(children)}
+        children={() => renderRouter(children)}
       />
     ) : (
       <Route path={path} exact key={index} component={Component} />
@@ -47,13 +47,7 @@ const renderRouter = routers =>
   )
 
 class BlogRouter extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    console.log(this.props)
-    console.log(this.props.loading)
     return (
       <Fragment>
         <Loading loading={this.props.loading} />

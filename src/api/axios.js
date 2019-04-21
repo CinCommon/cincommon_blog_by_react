@@ -9,6 +9,7 @@ let timer
 const showLoading = () => {
   cnt++
   if (!store.getState().loading) {
+    clearTimeout(timer)
     timer = setTimeout(() => {
       setLoading(true)
     }, 500)

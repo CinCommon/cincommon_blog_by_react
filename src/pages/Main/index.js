@@ -5,13 +5,14 @@ import { BlogCard, SimplePagination } from 'components'
 import { formatDate } from 'utils/utils'
 import api from 'api'
 
+let timer = null;
 export default class Main extends React.Component {
   constructor() {
     super()
     this.state = {
       blogList: [],
-      pageSize: 2,
-      pageNum: 1,
+      pageSize: 10,
+      pageNum: 0,
       total: 0
     }
     this.onBlogClick = this.onBlogClick.bind(this)
@@ -22,7 +23,6 @@ export default class Main extends React.Component {
   componentDidMount() {
     this.renderList()
   }
-
   renderList() {
     const { params, path } = this.props.match
     switch (path) {
@@ -51,13 +51,17 @@ export default class Main extends React.Component {
     this.props.history.push(`/blog/${blogId}`)
   }
   onTagClick(tagId) {
+    this.findBlogByTagId(tagId)
     this.props.history.push(`/tag/${tagId}`)
   }
   findBlogByTagId(id) {
-    api.get.findTagById(id).then(data => {
-      this.setState({ blogList: data.blogInfoSet })
-      setHeader(data.tagName)
-    })
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      api.get.findTagById(id).then(data => {
+        this.setState({ blogList: data.blogInfoSet })
+        setHeader(data.tagName)
+      })
+    }, 200)
   }
   findBlogByCalendar(date) {
     api.get.getOneDayBlog(date).then(data => {

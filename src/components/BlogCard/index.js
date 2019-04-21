@@ -4,13 +4,11 @@ import { formatDate } from 'utils/utils'
 
 const BlogCard = ({ blog, onBlogClick, onTagClick, onDateClick }) => {
   return (
-    <div
-      className={'blog-block'}
-      key={blog.id}
-      onClick={() => onBlogClick(blog.id, blog)}
-    >
+    <div className={'blog-block'} key={blog.id}>
       <div className="block-title-container">
-        <h1 className="block-title">{blog.title}</h1>
+        <h1 className="block-title" onClick={() => onBlogClick(blog.id, blog)}>
+          {blog.title}
+        </h1>
         <div className="block-info-wrapper">
           <span
             className="block-date"
