@@ -1,7 +1,9 @@
 import React from 'react'
-import HighLight from 'react-highlight'
 import { connect } from 'react-redux'
 import { setHeader } from 'utils/commonRedux'
+import ReactMarkdown from 'react-markdown'
+import hljs from 'highlight.js/lib/index'
+import 'highlight.js/styles/qtcreator_dark.css'
 import './index.scss'
 import api from 'api'
 class Detail extends React.Component {
@@ -34,7 +36,7 @@ class Detail extends React.Component {
         blogInfo: currentBlog,
         prevBlog: prevBlog || {},
         postBlog: postBlog || {}
-      })
+      }, hljs.initHighlighting)
       // scroll to top
       document.getElementById('detail-container').scrollTo(0, 0)
     })
@@ -51,7 +53,8 @@ class Detail extends React.Component {
     return (
       <div id="detail-container" className="detail-container">
         <div className="detail-wrapper">
-          <HighLight innerHTML={true}>{blogInfo.content}</HighLight>
+          {blogInfo.introduction && <ReactMarkdown source={blogInfo.introduction} style={{ fontStyle: 'italic' }} />}
+          <ReactMarkdown source={blogInfo.content} />
         </div>
         <div className="detail-footer">
           <div

@@ -2,6 +2,9 @@
   animation: fadeInRight 2s ease;
   overflow-y: auto;
   height: 100%;
+  img {
+    max-width: 100%;
+  }
   .detail-wrapper {
     width: 70%;
     margin: auto;
