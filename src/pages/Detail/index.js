@@ -36,10 +36,15 @@ class Detail extends React.Component {
         blogInfo: currentBlog,
         prevBlog: prevBlog || {},
         postBlog: postBlog || {}
-      }, hljs.initHighlighting)
+      }, this.renderCode)
       // scroll to top
       document.getElementById('detail-container').scrollTo(0, 0)
     })
+  }
+  renderCode() {
+    // hljs.initHighlighting 默认init之后就不会再次调用, 这里需要强制将flag置为false, 让其再次触发
+    hljs.initHighlighting.called = false
+    hljs.initHighlighting()
   }
   onPrevBlogClick(id) {
     this.footerRedirect(id)
