@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
   color: $base-font-color;
-  font-family: 'Titillium Web',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
@@ -13,5 +12,5 @@ body {
 }
 
 code {
-  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", monospace;
+  font-family: Arial, "Microsoft YaHei", "微软雅黑", monospace;
 }
