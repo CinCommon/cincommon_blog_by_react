@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import App from './App'
-import { Main, Category, CalendarView, Detail } from './pages'
+import { Main, Category, CalendarView, Detail, Home } from './pages'
 import { Loading } from './components'
 import { connect } from 'react-redux'
 
@@ -9,6 +9,10 @@ const routers = [
   {
     path: '/',
     Component: Main
+  },
+  {
+    path: '/landing',
+    Component: Home,
   },
   {
     path: '/tag',
