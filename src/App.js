@@ -6,7 +6,6 @@ class App extends Component {
 
   componentWillMount() {
     const firstVisit = sessionStorage.getItem('_IS_FIRST_VISIT')
-    console.log(firstVisit)
     if (firstVisit !== 'false') {
       this.props.history.replace('/landing')
     }

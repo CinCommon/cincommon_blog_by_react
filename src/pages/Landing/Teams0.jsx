@@ -9,9 +9,7 @@ import 'rc-banner-anim/assets/index.css';
 class Teams extends React.PureComponent {
   getChildrenToRender = (children) => {
     return children.map((item, i) => {
-      console.log(item, i)
       const { titleWrapper, ...elementPros } = item;
-      console.log(titleWrapper, elementPros)
       return (
         <Element
           {...elementPros}

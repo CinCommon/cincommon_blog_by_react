@@ -1,7 +1,7 @@
 import React from 'react';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { isImg, getChildrenToRender } from './utils';
+import { isImg } from './utils';
 
 class Footer2 extends React.PureComponent {
   render() {
